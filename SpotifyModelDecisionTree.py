@@ -3,16 +3,19 @@ from sklearn.tree import DecisionTreeClassifier  # Import Decision Tree Classifi
 # Import train_test_split function
 from sklearn.model_selection import train_test_split
 
-songs = pd.read_csv("removedColsTraining.csv")
+songs = pd.read_csv("train.csv")
 feature_cols = ['danceability', 'energy', 'key',
                 'loudness', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence',
                 'tempo']
 X = songs[feature_cols]  # Features
-y = songs['isLiked']  # Target variable
+y = songs['isLiked']     # Target variable
 
 clf = DecisionTreeClassifier()
 clf = clf.fit(X, y)
 
-testSet = pd.read_csv("removedColsTest.csv")
-y_pred = clf.predict(testSet)
-print(y_pred)
+testSet = pd.read_csv("test.csv")
+y_pred = clf.predict(testSet[feature_cols])
+
+results = testSet
+results['isLiked'] = y_pred
+results.to_csv("results.csv", index=False)
