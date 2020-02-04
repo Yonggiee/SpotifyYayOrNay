@@ -16,6 +16,8 @@ clf = clf.fit(X, y)
 testSet = pd.read_csv("test.csv")
 y_pred = clf.predict(testSet[feature_cols])
 
+#output in new csv file
 results = testSet
 results['isLiked'] = y_pred
+results = results[['name', 'isLiked']]
 results.to_csv("results.csv", index=False)
