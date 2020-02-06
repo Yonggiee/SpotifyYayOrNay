@@ -7,6 +7,7 @@ songs = pd.read_csv("train.csv")
 feature_cols = ['danceability', 'energy', 'key',
                 'loudness', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence',
                 'tempo']
+                
 X = songs[feature_cols]  # Features
 y = songs['isLiked']     # Target variable
 
