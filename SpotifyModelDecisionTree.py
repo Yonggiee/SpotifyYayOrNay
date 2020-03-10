@@ -3,8 +3,7 @@ from sklearn.tree import DecisionTreeClassifier  # Import Decision Tree Classifi
 from sklearn.model_selection import train_test_split
 
 songs = pd.read_csv("train.csv")
-feature_cols = ['danceability', 'energy', 'key',
-                'loudness', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence',
+feature_cols = ['danceability', 'energy', 'key', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence',
                 'tempo']
 
 X_train, X_test, y_train, y_test = train_test_split(songs, songs['isLiked'], test_size=0.33, random_state=43)
